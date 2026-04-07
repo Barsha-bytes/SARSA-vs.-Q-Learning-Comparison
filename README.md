@@ -5,12 +5,12 @@ This repository explores the fundamental differences between **On-Policy** and *
 ## Project Overview
 The goal is to navigate an agent from a starting point to a goal while avoiding a "cliff" that incurs a -100 penalty. This project demonstrates why **SARSA** prioritizes safety while **Q-Learning** prioritizes mathematical optimality.
 
-## 🛠️ Tech Stack
+##  Tech Stack
 * **Language:** Python
 * **Libraries:** Gymnasium, NumPy, Matplotlib, Seaborn
 * **Algorithms:** SARSA (On-Policy), Q-Learning (Off-Policy)
 
-## Experimental Results
+##  Experimental Results
 
 ### 1. Performance Training Curves
 The following plot represents the sum of rewards per episode, averaged over **30 independent seeds** with a 95% confidence interval. 
@@ -39,7 +39,7 @@ The policy arrows show the final strategy developed by each agent.
 **Q-Learning Strategy (The Risky Shortest Path):**
 ![Q-Learning Policy](images/Learn_Policy_Q_learning.png)
 
-## Core Insights
+##  Core Insights
 | Feature | SARSA | Q-Learning |
 | :--- | :--- | :--- |
 | **Update Type** | On-Policy | Off-Policy |
@@ -47,3 +47,8 @@ The policy arrows show the final strategy developed by each agent.
 | **Path Taken** | Long way around | Along the cliff edge |
 | **Best Use Case** | Physical robots / High-risk | Simulations / Low-risk |
 
+##  How to Run
+1. Clone this repository.
+2. Ensure you have the dependencies installed:
+   ```bash
+   pip install gymnasium numpy matplotlib seaborn
