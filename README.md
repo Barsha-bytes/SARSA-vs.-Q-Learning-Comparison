@@ -1,56 +1,49 @@
-# Cliff Walking: SARSA vs. Q-Learning (On-Policy vs. Off-Policy)
+# Cliff Walking: SARSA vs. Q-Learning Analysis
 
-This repository contains a comprehensive reinforcement learning study comparing the **SARSA** and **Q-Learning** algorithms using the OpenAI Gymnasium `CliffWalking-v0` environment.
+This repository explores the fundamental differences between **On-Policy** and **Off-Policy** reinforcement learning using the `CliffWalking-v0` environment. 
 
 ## Project Overview
-The "Cliff Walking" problem is a grid-world MDP where an agent must navigate from a start point (bottom-left) to a goal (bottom-right). The challenge lies in a "cliff" located between the start and goal; stepping on it results in a $-100$ reward and resets the agent to the starting position.
+The goal is to navigate an agent from a starting point to a goal while avoiding a "cliff" that incurs a -100 penalty. This project demonstrates why **SARSA** prioritizes safety while **Q-Learning** prioritizes mathematical optimality.
 
-This project demonstrates the fundamental trade-off between **safety (SARSA)** and **optimality (Q-Learning)**.
-
-## Tech Stack
+## 🛠️ Tech Stack
 * **Language:** Python
-* **Environment:** [Gymnasium](https://gymnasium.farama.org/) (CliffWalking-v0)
-* **Libraries:** NumPy, Matplotlib, Seaborn
+* **Libraries:** Gymnasium, NumPy, Matplotlib, Seaborn
+* **Algorithms:** SARSA (On-Policy), Q-Learning (Off-Policy)
 
-## 📊 Experimental Setup
-To ensure statistical significance, the algorithms were evaluated across **30 independent seeds** with the following hyperparameters:
+## Experimental Results
 
-| Hyperparameter | Value | Description |
-| :--- | :--- | :--- |
-| **Alpha ($\alpha$)** | 0.1 | Learning Rate |
-| **Gamma ($\gamma$)** | 0.99 | Discount Factor |
-| **Epsilon ($\epsilon$)** | 0.1 | Fixed Exploration Rate |
-| **Episodes** | 500 | Training steps per seed |
+### 1. Performance Training Curves
+The following plot represents the sum of rewards per episode, averaged over **30 independent seeds** with a 95% confidence interval. 
 
-## Key Results
+![Learning Curves](images/1output.png)
 
-### 1. Performance Comparison
-The learning curves below display the sum of rewards per episode with a **95% Confidence Interval**.
+* **SARSA** converges to a higher total reward because it avoids the cliff.
+* **Q-Learning** has lower average rewards during training because its exploratory moves often lead to "falling" off the edge.
 
-* **SARSA** achieves a higher average reward (~ -17). As an **On-Policy** algorithm, it learns a path that accounts for its own $10\%$ exploration, choosing to stay away from the cliff.
-* **Q-Learning** shows lower average rewards during training (~ -50 to -80). As an **Off-Policy** algorithm, it attempts to hug the cliff edge and frequently falls due to exploratory moves.
+### 2. Value Function Heatmaps
+These heatmaps show the "Value" ($V(s)$) of each state. 
 
-> ![Learning Curves](images/1output.png).
+| SARSA (Safe Knowledge) | Q-Learning (Optimal Knowledge) |
+| :---: | :---: |
+| ![SARSA Heatmap](images/Heatmap_Sarsa.png) | ![Q-Learning Heatmap](images/Q_Learning_Heatmap.png) |
 
-### 2. Behavioral Analysis
-The heatmaps and quiver plots confirm the divergent strategies:
+* **SARSA** values the states near the cliff much lower (red/yellow), reflecting its cautious nature.
+* **Q-Learning** maintains higher values near the edge because it assumes perfect future play.
 
-* **SARSA (On-Policy):** Takes the "High Road." The policy arrows indicate the agent moves to the top-most rows to maintain a safety buffer from the cliff.
-* **Q-Learning (Off-Policy):** Takes the "Cliff Edge." The policy learns the mathematically shortest 13-step path, ignoring the risk of accidental falls during the learning phase.
+### 3. Learned Policies (Quiver Plots)
+The policy arrows show the final strategy developed by each agent.
 
-> **Note:** Place your `heatmap.png` and `policy_arrows.png` here.
+**SARSA Strategy (The Safe High Road):**
+![SARSA Policy](images/Learned_Policy.png)
+
+**Q-Learning Strategy (The Risky Shortest Path):**
+![Q-Learning Policy](images/Learn_Policy_Q_learning.png)
 
 ## Core Insights
-* **On-Policy (SARSA):** Learns the value of the policy it is actually following. It is "realistic" and prioritizes safety in environments where mistakes are costly.
-* **Off-Policy (Q-Learning):** Learns the value of the *optimal* policy regardless of the agent's current behavior. It is "optimistic" and prioritizes absolute efficiency.
+| Feature | SARSA | Q-Learning |
+| :--- | :--- | :--- |
+| **Update Type** | On-Policy | Off-Policy |
+| **Strategy** | Cautious / Safe | Optimal / Risky |
+| **Path Taken** | Long way around | Along the cliff edge |
+| **Best Use Case** | Physical robots / High-risk | Simulations / Low-risk |
 
-## How to Run
-1.  Clone the repository:
-    ```bash
-    git clone [https://github.com/Barsha-bytes/SARSA-vs.-Q-Learning-Comparison/blob/main/README.md]
-    ```
-2.  Install dependencies:
-    ```bash
-    pip install gymnasium numpy matplotlib seaborn
-    ```
-3.  Open and run the Jupyter Notebook: `Kakshapati_Barsha_Lab4_Q-Learning.ipynb`
