@@ -2,12 +2,12 @@
 
 This repository contains a comprehensive reinforcement learning study comparing the **SARSA** and **Q-Learning** algorithms using the OpenAI Gymnasium `CliffWalking-v0` environment.
 
-## 📌 Project Overview
+## Project Overview
 The "Cliff Walking" problem is a grid-world MDP where an agent must navigate from a start point (bottom-left) to a goal (bottom-right). The challenge lies in a "cliff" located between the start and goal; stepping on it results in a $-100$ reward and resets the agent to the starting position.
 
 This project demonstrates the fundamental trade-off between **safety (SARSA)** and **optimality (Q-Learning)**.
 
-## 🛠️ Tech Stack
+## Tech Stack
 * **Language:** Python
 * **Environment:** [Gymnasium](https://gymnasium.farama.org/) (CliffWalking-v0)
 * **Libraries:** NumPy, Matplotlib, Seaborn
@@ -22,7 +22,7 @@ To ensure statistical significance, the algorithms were evaluated across **30 in
 | **Epsilon ($\epsilon$)** | 0.1 | Fixed Exploration Rate |
 | **Episodes** | 500 | Training steps per seed |
 
-## 📈 Key Results
+## Key Results
 
 ### 1. Performance Comparison
 The learning curves below display the sum of rewards per episode with a **95% Confidence Interval**.
@@ -40,11 +40,11 @@ The heatmaps and quiver plots confirm the divergent strategies:
 
 > **Note:** Place your `heatmap.png` and `policy_arrows.png` here.
 
-## 🧠 Core Insights
+## Core Insights
 * **On-Policy (SARSA):** Learns the value of the policy it is actually following. It is "realistic" and prioritizes safety in environments where mistakes are costly.
 * **Off-Policy (Q-Learning):** Learns the value of the *optimal* policy regardless of the agent's current behavior. It is "optimistic" and prioritizes absolute efficiency.
 
-## 🚀 How to Run
+## How to Run
 1.  Clone the repository:
     ```bash
     git clone [https://github.com/yourusername/cliff-walking-comparison.git](https://github.com/yourusername/cliff-walking-comparison.git)
