@@ -30,7 +30,7 @@ The learning curves below display the sum of rewards per episode with a **95% Co
 * **SARSA** achieves a higher average reward (~ -17). As an **On-Policy** algorithm, it learns a path that accounts for its own $10\%$ exploration, choosing to stay away from the cliff.
 * **Q-Learning** shows lower average rewards during training (~ -50 to -80). As an **Off-Policy** algorithm, it attempts to hug the cliff edge and frequently falls due to exploratory moves.
 
-> **Note:** Place your `learning_curves.png` here.
+> ![Learning Curves](images/1output.png).
 
 ### 2. Behavioral Analysis
 The heatmaps and quiver plots confirm the divergent strategies:
