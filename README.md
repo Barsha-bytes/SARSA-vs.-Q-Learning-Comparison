@@ -47,7 +47,7 @@ The heatmaps and quiver plots confirm the divergent strategies:
 ## How to Run
 1.  Clone the repository:
     ```bash
-    git clone [https://github.com/yourusername/cliff-walking-comparison.git](https://github.com/yourusername/cliff-walking-comparison.git)
+    git clone [[[https://github.com/yourusername/cliff-walking-comparison.git](https://github.com/yourusername/cliff-walking-comparison.git](https://github.com/Barsha-bytes/SARSA-vs.-Q-Learning-Comparison/blob/main/README.md))](https://github.com/Barsha-bytes/SARSA-vs.-Q-Learning-Comparison/blob/main/README.md)
     ```
 2.  Install dependencies:
     ```bash
